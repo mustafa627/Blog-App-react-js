@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { db } from "../firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
-import { TextField, Button, Stack, Typography } from "@mui/material";
+import { TextField, Button, Stack, Typography, Box } from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ToastAlert from "../utilitis";
-
 const EditBlog = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -20,9 +20,9 @@ const EditBlog = () => {
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
         const data = docSnap.data();
-        setTitle("");
-        setSubject("");
-        setDesc("");
+        setTitle(docSnap.data().title);
+        setSubject(docSnap.data().subject);
+        setDesc(docSnap.data().desc);
         setIsPrivate(data.isPrivate);
       } else {
         ToastAlert({ type: "error", message: "Blog not found" });
@@ -42,7 +42,7 @@ const EditBlog = () => {
         isPrivate,
       });
       ToastAlert({ type: "success", message: "Blog updated!" });
-      navigate("/");
+      navigate("/myblogs");
     } catch (err) {
       ToastAlert({ type: "error", message: "Update failed!" });
       console.error("Error updating blog: ", err);
@@ -50,61 +50,70 @@ const EditBlog = () => {
   };
 
   return (
-    <Stack
-      spacing={2}
-      sx={{
-        width: "50%",
-        margin: "auto",
-        mt: 4,
-        border: "1px solid #ccc",
-        padding: "20px",
-        borderRadius: "8px",
-        backgroundColor: "#1b2639",
-        color: "#fff",
-      }}
-    >
-      <Typography variant="h4" align="center">
-        Edit Blog{" "}
-      </Typography>
-      <TextField
-        InputProps={{
-          style: { color: "white" , borderRadius: "20px"},
+    <>
+      {" "}
+      <Box sx={{ display: "flex", justifyContent: "flex-start",   }}>
+        <Button onClick={() => navigate(-1)}>
+          <ArrowBackIcon /> Back
+        </Button>
+      </Box>
+      <Stack
+        spacing={2}
+        sx={{
+          width: "50%",
+          margin: "auto",
+          mt: 4,
+          border: "1px solid #ccc",
+          padding: "20px",
+          borderRadius: "8px",
+          backgroundColor: "#1b2639",
+          color: "#fff",
         }}
-        label="Title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <TextField
-        label="Subject"
-        value={subject}
-        onChange={(e) => setSubject(e.target.value)}
-         InputProps={{
-          style: { color: "white" , borderRadius: "20px"},
-        }}
-      />
-      <TextField
-        label="Description"
-        value={desc}
-        onChange={(e) => setDesc(e.target.value)}
-        multiline
-        minRows={3}
-         InputProps={{
-          style: { color: "white" },         
-        }}
-      />
-      <label>
-        <input
-          type="checkbox"
-          checked={isPrivate}
-          onChange={(e) => setIsPrivate(e.target.checked)}      
-        /> 
-       <Typography sx={{color: "grey", fontSize: "20px" }}
-        variant="p">Private ?</Typography>
-      </label>
-      <Button variant="contained" onClick={handleUpdate}>
-        Update Blog
-      </Button>
-    </Stack>
+      >
+        <Typography variant="h4" align="center">
+          Edit Blog{" "}
+        </Typography>
+        <TextField
+          InputProps={{
+            style: { color: "white", borderRadius: "20px" },
+          }}
+          label="Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <TextField
+          label="Subject"
+          value={subject}
+          onChange={(e) => setSubject(e.target.value)}
+          InputProps={{
+            style: { color: "white", borderRadius: "20px" },
+          }}
+        />
+        <TextField
+          label="Description"
+          value={desc}
+          onChange={(e) => setDesc(e.target.value)}
+          multiline
+          minRows={3}
+          InputProps={{
+            style: { color: "white" },
+          }}
+        />
+        <label>
+          <input
+            type="checkbox"
+            checked={isPrivate}
+            onChange={(e) => setIsPrivate(e.target.checked)}
+          />
+          <Typography sx={{ color: "grey", fontSize: "20px" }} variant="p">
+            Private ?
+          </Typography>
+        </label>
+        <Button variant="contained" onClick={handleUpdate}>
+          Update Blog
+        </Button>
+      </Stack>
+    </>
   );
 };
 

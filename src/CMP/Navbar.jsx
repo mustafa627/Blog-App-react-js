@@ -11,14 +11,15 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
 import { Transform } from "@mui/icons-material";
-
+import AcUnitIcon from "@mui/icons-material/AcUnit";
+import AdbIcon from "@mui/icons-material/Adb";
+import AddCardOutlinedIcon from "@mui/icons-material/AddCardOutlined";
 // const pages = [ 'Blog'  , "My Blog" , "Create Blog"];
 const pages = [
   {
-    title: "Blog",
+    title: "Home",
     url: "/blogs",
   },
   {
@@ -28,6 +29,7 @@ const pages = [
   {
     title: "Create Blog",
     url: "/createblogs",
+    logo: <AddCardOutlinedIcon />,
   },
 ];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -65,15 +67,13 @@ function Navbar() {
       <Container
         maxWidth="xl"
         sx={{
-           
-            width: "100%",
-   
-         
-          gap: "20px"
+          width: "100%",
+
+          gap: "20px",
         }}
       >
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <AcUnitIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -122,6 +122,7 @@ function Navbar() {
               {pages.map((page) => (
                 <MenuItem key={page.title} onClick={handleCloseNavMenu}>
                   <Typography sx={{ textAlign: "center" }}>
+                    {<span>{page.logo}</span>}
                     {page.title}
                   </Typography>
                 </MenuItem>
@@ -157,8 +158,7 @@ function Navbar() {
                   color: "white",
                   display: "block",
                   "&:hover": {
-                    borderBottom: "2px solid white",
-                    color: "black",  
+                    color: "black",
                     backgroundColor: "white",
                   },
                 }}
@@ -168,9 +168,13 @@ function Navbar() {
                     textDecoration: "none",
                     fontWeight: "bold",
                     color: "green",
+                    gap: "10px",
+                    display: "flex",
+                    alignItems: "center",
                   }}
                   to={page.url}
                 >
+                  <span>{page.logo}</span>
                   {page.title}
                 </Link>
               </Button>

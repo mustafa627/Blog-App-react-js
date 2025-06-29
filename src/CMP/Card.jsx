@@ -9,11 +9,12 @@ import { db } from "../firebase";
 import ToastAlert from "../utilitis";
 import { useNavigate } from "react-router-dom";
 
-export default function BlogCard({ cardDetails, actionBtn }) {
+export default function BlogCard({ cardDetails, actionBtn, setRefresh }) {
   // console.log("cardDetails", cardDetails);
 
   const deleteBlog = async () => {
     await deleteDoc(doc(db, "blogs", cardDetails.id));
+    setRefresh((prev) => !prev);
     ToastAlert({
       type: "success",
       message: "Blog deleted successfully!",

@@ -53,8 +53,9 @@ const CreateBlogs = () => {
         image: url,
         createdAt: new Date(),
         userId: localStorage.getItem("user"),
+        isActive: true
       };
-      console.log("obj", obj);
+      // console.log("obj", obj);
       if(!title || !subject || !desc) {
         ToastAlert({
           type: "error",

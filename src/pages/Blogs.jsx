@@ -7,24 +7,27 @@ import ToastAlert from "../utilitis";
 import BlogCard from "../CMP/Card";
 const Blogs = () => {
   const [blogData, setBlogData] = useState([]);
-  // const [loading, setLoading] = useState(false);
+  
+    const [loading, setLoading] = useState(false)
   useEffect(() => {
     getData();
   }, []);
   const getData = async () => {
     try {
-      // setLoading(true);
+      setLoading(true);
       const response = await getDocs(collection(db, "blogs"));
-      // setLoading(false);
+      setLoading(false);
       const temArr = [];
       response.forEach((doc) => {
         const obj = { ...doc.data(), id: doc.id };
         temArr.push(obj);
       });
       setBlogData(temArr);
+      
       // console.log("blogs", blogData)
     } catch (error) {
       console.log("error", error.message);
+        setLoading(false)
       ToastAlert({
         type: "error",
         message: error.message || "something went wront",
@@ -34,9 +37,18 @@ const Blogs = () => {
 
   return (
     <>
-      {/* loading && <CircularProgress /> : */}  
-      <Navbar />
-      <div
+      <Navbar />   
+   { loading ? <Box
+     sx={{
+       display: 'flex',
+       justifyContent: 'center',
+       alignItems: 'center',
+       minHeight: '50vh',  // Adjustable based on design
+       width: '100%',
+     }}
+   >
+     <CircularProgress size={50} color="secondary" />
+   </Box> :  <div
         style={{
           width: "100%",
           display: "flex",
@@ -48,10 +60,11 @@ const Blogs = () => {
           boxSizing: "border-box",
         }}
       >
-        {blogData.map((obj) => {
-          return !obj.isPrivate && <BlogCard key={obj.id} cardDetails={obj}/>;
-        })}
-      </div>
+       {blogData.filter((blog) => blog.isActive)
+  .map((obj) => {
+    return !obj.isPrivate && <BlogCard key={obj.id} cardDetails={obj} />;
+  })}
+      </div>}
     </>
   );
 };

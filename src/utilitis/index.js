@@ -32,3 +32,19 @@ switch (obj.type) {
 }
 
 export default ToastAlert;
+
+
+//  "dependencies": {
+//     "@cloudinary/react": "^1.14.3",
+//     "@cloudinary/url-gen": "^1.21.0",
+//     "@emotion/react": "^11.14.0",
+//     "@emotion/styled": "^11.14.0",
+//     "@mui/icons-material": "^7.1.2",
+//     "@mui/material": "^7.1.2",
+//     "axios": "^1.10.0",
+//     "firebase": "^11.9.1",
+//     "react": "^19.1.0",
+//     "react-dom": "^19.1.0",
+//     "react-router-dom": "^7.6.2",
+//     "react-toastify": "^11.0.5"
+//   },
