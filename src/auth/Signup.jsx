@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TextField, Button, Typography } from "@mui/material";
+import { TextField, Button, Typography, Box } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { auth, db } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -56,8 +56,11 @@ const Signup = () => {
       });
       // navigate("/blogs");
     } catch (e) {
-      toast.error("Error creating user: " + e.message);
       console.error("Error creating user:", e);
+     ToastAlert({
+        type: "error",
+        message:  e.message,
+      });
     }
   };
 
@@ -76,7 +79,26 @@ const Signup = () => {
         marginTop: "50px",
       }}
     >
-      <h1 style={{ textAlign: "center" }}>Welcome !</h1>
+      <Box sx={{ width: "100%", background: "linear-gradient(to bottom, #000000, #1a1a1a)", }}>
+  <h1
+    style={{
+      textAlign: "center",
+       
+      color: "white",
+      // height: "150px",  
+      width: "100%",
+      margin: 0,  
+      borderBottomLeftRadius: "20px",
+      borderBottomRightRadius: "20px",
+      borderRadius: "10px",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    }}
+  >
+    Welcome !
+  </h1>
+</Box>
       <TextField
         id="outline-basic"
         label="Full Name"

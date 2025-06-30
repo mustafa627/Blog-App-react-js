@@ -25,7 +25,7 @@ export default function BlogCard({ cardDetails, actionBtn, setRefresh }) {
   return (
     <Card
       sx={{
-        width: 280,
+        width: "30%",
         margin: "10px",
         boxShadow: "0 0 5px #ccc",
         borderRadius: "10px",
@@ -47,7 +47,7 @@ export default function BlogCard({ cardDetails, actionBtn, setRefresh }) {
           Title : {cardDetails.title}
         </Typography>
         <Typography variant="body2" sx={{ color: "text.secondary" }}>
-          Desc : {cardDetails.subject}
+          Subject : {cardDetails.subject}
         </Typography>{" "}
         <br />
         <Typography variant="body2" sx={{ color: "text.secondary" }}>

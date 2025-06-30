@@ -14,7 +14,9 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminRoutes from "./Routes/Adminroutes";
 import AllUsers from "./pages/admin/AllUsers";
 import AllData from "./pages/admin/AllData";
+import "@fontsource/poppins";
 import DashboardLayoutBasic from "./CMP/AdminLayout";
+
 function App() {
   return (
     <>
@@ -33,14 +35,12 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Route>
 
-       
-      <Route element={<AdminRoutes />}>
-          <Route  path="/dashboard/admin" element={<AdminDashboard />} />
+        <Route element={<AdminRoutes />}>
+          <Route path="/dashboard/admin" element={<AdminDashboard />} />
           <Route path="/dashboard/admin/users" element={<AllUsers />} />
-          <Route path="/dashboard/admin/alldata" element={<AllData />} /> 
-        <Route path="*" element={<NotFound />} />
-      </Route>
-   
+          <Route path="/dashboard/admin/alldata" element={<AllData />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
       </Routes>
       <ToastContainer
         position="top-right"
