@@ -3,7 +3,7 @@ import { TextField, Button, Typography, Box } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { auth, db } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { Bounce, toast } from "react-toastify";
+import { Bounce,  } from "react-toastify";
 import ToastAlert from "../utilitis";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 
