@@ -3,7 +3,7 @@ import { TextField, Button, Typography, Box } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { auth, db } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { Bounce,  } from "react-toastify";
+import { Bounce } from "react-toastify";
 import ToastAlert from "../utilitis";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 
@@ -15,6 +15,7 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
+
   const handleSubmit = async () => {
     // console.log("Email:", email);
     // console.log("Password:", password);
@@ -23,7 +24,7 @@ const Signup = () => {
       const res = await createUserWithEmailAndPassword(auth, email, password);
       // console.log("User created successfully:", res.user);
       localStorage.setItem("user", res.user.uid);
-     
+
       const uid = res.user.uid;
       const userObj = {
         fullName,
@@ -37,7 +38,7 @@ const Signup = () => {
 
       const data = await getDoc(doc(db, "users", uid));
       const userData = data.data();
-       localStorage.setItem("userObj", JSON.stringify(userData));
+      localStorage.setItem("userObj", JSON.stringify(userData));
       if (data.exists()) {
         const userData = data.data();
 
@@ -57,9 +58,9 @@ const Signup = () => {
       // navigate("/blogs");
     } catch (e) {
       console.error("Error creating user:", e);
-     ToastAlert({
+      ToastAlert({
         type: "error",
-        message:  e.message,
+        message: e.message,
       });
     }
   };
@@ -79,26 +80,31 @@ const Signup = () => {
         marginTop: "50px",
       }}
     >
-      <Box sx={{ width: "100%", background: "linear-gradient(to bottom, #000000, #1a1a1a)", }}>
-  <h1
-    style={{
-      textAlign: "center",
-       
-      color: "white",
-      // height: "150px",  
-      width: "100%",
-      margin: 0,  
-      borderBottomLeftRadius: "20px",
-      borderBottomRightRadius: "20px",
-      borderRadius: "10px",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    }}
-  >
-    Welcome !
-  </h1>
-</Box>
+      <Box
+        sx={{
+          width: "100%",
+          background: "linear-gradient(to bottom, #000000, #1a1a1a)",
+        }}
+      >
+        <h1
+          style={{
+            textAlign: "center",
+
+            color: "white",
+            // height: "150px",
+            width: "100%",
+            margin: 0,
+            borderBottomLeftRadius: "20px",
+            borderBottomRightRadius: "20px",
+            borderRadius: "10px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          Welcome !
+        </h1>
+      </Box>
       <TextField
         id="outline-basic"
         label="Full Name"

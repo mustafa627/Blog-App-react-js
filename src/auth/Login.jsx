@@ -9,6 +9,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
   const loginHandler = async () => {
     // console.log("Email:", email);
     // console.log("Password:", password);
@@ -54,7 +55,7 @@ const Login = () => {
       console.error("Error signing in:", error);
       ToastAlert({
         type: "error",
-        message:  error.message,
+        message: error.message,
       });
     }
   };
@@ -72,15 +73,20 @@ const Login = () => {
         marginTop: "50px",
       }}
     >
-      <Box sx={{ width: "100%",  background: "linear-gradient(to bottom, #000000, #1a1a1a)", }}>
+      <Box
+        sx={{
+          width: "100%",
+          background: "linear-gradient(to bottom, #000000, #1a1a1a)",
+        }}
+      >
         <h1
           style={{
             textAlign: "center",
-            
+
             color: "white",
-            
+
             width: "100%",
-            margin: 0,  
+            margin: 0,
             borderBottomLeftRadius: "20px",
             borderBottomRightRadius: "20px",
             borderRadius: "10px",
@@ -92,6 +98,7 @@ const Login = () => {
           Login
         </h1>
       </Box>
+
       <TextField
         id="standard-basic"
         label="Email"

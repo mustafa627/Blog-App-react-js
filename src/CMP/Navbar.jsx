@@ -92,7 +92,7 @@ function Navbar() {
             BlogApp
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          {/* <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -129,6 +129,55 @@ function Navbar() {
               ))}
             </Menu>
           </Box>
+           */}
+           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+  <IconButton
+    size="large"
+    aria-label="account of current user"
+    aria-controls="menu-appbar"
+    aria-haspopup="true"
+    onClick={handleOpenNavMenu}
+    color="inherit"
+  >
+    <MenuIcon />
+  </IconButton>
+  <Menu
+    id="menu-appbar"
+    anchorEl={anchorElNav}
+    anchorOrigin={{
+      vertical: "bottom",
+      horizontal: "left",
+    }}
+    keepMounted
+    transformOrigin={{
+      vertical: "top",
+      horizontal: "left",
+    }}
+    open={Boolean(anchorElNav)}
+    onClose={handleCloseNavMenu}
+    sx={{ display: { xs: "block", md: "none" } }}
+  >
+    {pages.map((page) => (
+      <MenuItem key={page.title} onClick={handleCloseNavMenu}>
+        <Link
+          to={page.url}
+          style={{
+            textDecoration: "none",
+            color: "inherit",
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
+            width: "100%",
+          }}
+        >
+          {page.logo}
+          {page.title}
+        </Link>
+      </MenuItem>
+    ))}
+  </Menu>
+</Box>
+
           <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           <Typography
             variant="h5"

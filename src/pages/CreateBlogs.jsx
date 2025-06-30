@@ -17,7 +17,6 @@
 // const CLOUD_NAME = `dfeznwdqp`;
 // const API_KEY = `V0SLkUEoMVIrhOIcdwzBNEsseAE`;
 
-
 // const CreateBlogs = () => {
 //   const [title, setTitle] = useState("");
 //   const [subject, setSubject] = useState("");
@@ -44,7 +43,6 @@
 //  url = resImage.data.secure_url
 //   }
 
-
 //       const obj = {
 //         title: title,
 //         subject: subject,
@@ -63,7 +61,7 @@
 //         });
 //         return;
 //       }
-      
+
 //       await addDoc(collection(db, "blogs"), obj);
 //       setTitle("");
 //       setSubject("");
@@ -126,7 +124,7 @@
 //               type="checkbox"
 //               onChange={(e) => setBlogPrivate(e.target.checked)}
 //             />
-//           } 
+//           }
 //           label=" isPrivate ??"
 //           value={blogPrivate}
 //         />
@@ -160,7 +158,7 @@ import {
 import { db } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { useRef, useState } from "react";
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import ToastAlert from "../utilitis";
 import axios from "axios";
 
