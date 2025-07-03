@@ -71,6 +71,7 @@ const Login = () => {
         borderRadius: "8px",
         boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
         marginTop: "50px",
+        backgroundColor: "#2c3e50",
       }}
     >
       <Box
@@ -82,9 +83,7 @@ const Login = () => {
         <h1
           style={{
             textAlign: "center",
-
             color: "white",
-
             width: "100%",
             margin: 0,
             borderBottomLeftRadius: "20px",
@@ -104,12 +103,14 @@ const Login = () => {
         label="Email"
         variant="standard"
         onChange={(e) => setEmail(e.target.value)}
+        
       />
       <TextField
         id="outline-basic"
         label="Password"
         variant="standard"
         onChange={(e) => setPassword(e.target.value)}
+                 
       />
       <Link to={"/signup"}>Sign Up</Link>
 

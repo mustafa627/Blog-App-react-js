@@ -77,6 +77,7 @@ const Signup = () => {
         padding: "20px",
         borderRadius: "8px",
         boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+        backgroundColor: "#2c3e50",
         marginTop: "50px",
       }}
     >
