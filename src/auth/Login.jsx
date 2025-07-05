@@ -112,7 +112,7 @@ const Login = () => {
         onChange={(e) => setPassword(e.target.value)}
                  
       />
-      <Link to={"/signup"}>Sign Up</Link>
+      <Link to={"/signup"}  style={{ textDecoration: "none", color: "wheat", fontWeight: "bold" }}> >Sign Up</Link>
 
       <Button variant="contained" color="success" onClick={loginHandler}>
         SIGN Up

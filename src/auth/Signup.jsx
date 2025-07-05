@@ -125,7 +125,7 @@ const Signup = () => {
         variant="standard"
         onChange={(e) => setPassword(e.target.value)}
       />
-      Already have an account? <Link to={"/"}>Login</Link>
+      Already have an account? <Link to={"/"} style={{ textDecoration: "none", color: "wheat", fontWeight: "bold" }}> >Login</Link>
       <Button variant="contained" color="success" onClick={handleSubmit}>
         SIGN Up
       </Button>
