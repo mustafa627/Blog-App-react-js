@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../CMP/Navbar";
-import { Stack, Box, CircularProgress } from "@mui/material";
+import { Stack, Box, CircularProgress, Grid } from "@mui/material";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import ToastAlert from "../utilitis";
@@ -38,33 +38,30 @@ const Blogs = () => {
   return (
     <>
       <Navbar />   
-   { loading ? <Box
-     sx={{
-       display: 'flex',
-       justifyContent: 'center',
-       alignItems: 'center',
-       minHeight: '50vh',  // Adjustable based on design
-       width: '100%',
-     }}
-   >
-     <CircularProgress size={50} color="secondary" />
-   </Box> :  <div
-        style={{
-          width: "100%",
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "flex-start",
-          alignItems: "flex-start",
-          gap: "20px",
-          padding: "20px",
-          boxSizing: "border-box",
-        }}
-      >
-       {blogData.filter((blog) => blog.isActive)
-  .map((obj) => {
-    return !obj.isPrivate && <BlogCard key={obj.id} cardDetails={obj} />;
-  })}
-      </div>}
+   {loading ? (
+  <Box
+    sx={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      minHeight: '50vh',
+      width: '100%',
+    }}
+  >
+    <CircularProgress size={50} color="secondary" />
+  </Box>
+) : (
+  <Grid container spacing={2} sx={{ px: { xs: 1, sm: 2, md: 3 }, py: 2 }}>
+    {blogData
+      .filter((blog) => blog.isActive && !blog.isPrivate)
+      .map((obj) => (
+        <Grid item xs={12} sm={6} md={4} key={obj.id}>
+          <BlogCard cardDetails={obj} />
+        </Grid>
+      ))}
+  </Grid>
+)}
+
     </>
   );
 };
