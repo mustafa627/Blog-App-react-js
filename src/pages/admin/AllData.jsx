@@ -44,6 +44,7 @@ const AllData = () => {
               <Card
                 sx={{
                   height: "100%",
+                  maxWidth: "200px",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",

@@ -52,7 +52,7 @@ const EditBlog = () => {
   return (
     <>
       {" "}
-      <Box sx={{ display: "flex", justifyContent: "flex-start",   }}>
+      <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
         <Button onClick={() => navigate(-1)}>
           <ArrowBackIcon /> Back
         </Button>
@@ -60,14 +60,20 @@ const EditBlog = () => {
       <Stack
         spacing={2}
         sx={{
-          width: "50%",
+          width: "100%",
           margin: "auto",
-          mt: 4,
+          mt: 2,
           border: "1px solid #ccc",
           padding: "20px",
           borderRadius: "8px",
           backgroundColor: "#1b2639",
           color: "#fff",
+          // width: "100%",
+          maxWidth: {
+            xs: "60%",
+            md: "60%",
+            sm: "70%",
+          },
         }}
       >
         <Typography variant="h4" align="center">

@@ -51,7 +51,7 @@ const Blogs = () => {
     <CircularProgress size={50} color="secondary" />
   </Box>
 ) : (
-  <Grid container spacing={2} sx={{ px: { xs: 1, sm: 2, md: 3 }, py: 2 }}>
+  <Grid container spacing={2} sx={{ px: { xs: 1, sm: 2, md: 3 }, py: 1 }}>
     {blogData
       .filter((blog) => blog.isActive && !blog.isPrivate)
       .map((obj) => (
